@@ -26,31 +26,49 @@
 
 <body>
   <div class="background">
-  <div class="white-board">
-    <img class="picture" src="assets/images/bg-sidebar-desktop.svg" alt="colorful-geometric-picture" />
-    <form id="form">
-      <div class="text1">Personal info</div>
-      <div class="text2">Please provide your name, email address, and phone number.</div>
-      <div class="bars">
-        <div>
-          <label for="bar1" id="nameLabel">Name</label>
-          <input type="text" id="bar1" placeholder="e.g. Stephen King">
-        </div>
-        <div>
-          <label for="bar2" id="emailLabel">Email Address</label>
-          <input type="text" id="bar2" placeholder="e.g. stephenking@lorem.com">
-        </div>
-        <div>
-          <label for="bar3" id="phoneLabel">Phone Number</label>
-          <input type="text" id="bar3" placeholder="e.g. +1 234 567 890">
+    <div class="white-board">
+      <div class="container">
+        <img class="picture" src="assets/images/bg-sidebar-desktop.svg" alt="colorful-geometric-picture" />
+        <div class="step1">
+          <div class="circle-button">1</div>
+          <div class="step-text1">STEP 1</div>
+          <div class="step-text2">YOUR INFO</div>
         </div>
       </div>
-      <button class="next-button" type='submit'>Next step</button>
-    </form>
+      <div class="text1">Text1</div>
+      <div class="text2">Text2</div>
+      <form id="form">
+
+        <div class="bars">
+          <div>
+            <label for="bar1" id="nameLabel">Name</label>
+            <input type="text" id="bar1" placeholder="e.g. Stephen King">
+            <span id="nameError" class="error-text" style="display: none;"><i>Error</i></span>
+          </div>
+          <div>
+            <label for="bar2" id="emailLabel">Email Address</label>
+            <input type="text" id="bar2" placeholder="e.g. stephenking@lorem.com">
+            <span id="emailError" class="error-text" style="display: none;"><i>Error</i></span>
+          </div>
+          <div>
+            <label for="bar3" id="phoneLabel">Phone Number</label>
+            <input type="text" id="bar3" placeholder="e.g. +1 234 567 890">
+            <span id="phoneError" class="error-text" style="display: none;"><i>Error</i></span>
+          </div>
+        </div>
+        <button class="next-button" type='submit'>Next step</button>
+      </form>
+      <div class="buttons">
+        <button class="arcade-button" style="display:none">
+          <img src="assets/images/icon-arcade.svg" alt="arcade-icon">Arcade</button>
+        <button class="advanced-button" style="display:none">
+          <img src="assets/images/icon-advanced.svg" alt="arcade-icon">Advanced</button>
+        <button class="pro-button" style="display:none">
+          <img src="assets/images/icon-pro.svg" alt="arcade-icon">Pro</button>
+      </div>
 
 
-
-  </div>
+    </div>
   </div>
   <!-- Sidebar start -->
 
@@ -151,7 +169,7 @@
   to email us at support@loremgaming.com. -->
 
   <!-- Step 5 end -->
-
+  <script src="app.js"></script>
 
 </body>
 
