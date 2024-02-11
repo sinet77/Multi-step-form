@@ -13,66 +13,95 @@
     /*jeśli zawartość strony jest mniejsza, white-board będzie zawsze na środku widoku */
 }
 .white-board{
+    margin:auto;
+    display: flex;
+    background-color: hsl(231, 100%, 99%);
+    border-radius: 10px;
+    width:50%;
+    height: 450px;
+    padding: 10px;
+    box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 0.75);
+}
+
+label {
+    font-size: 13px;
+    padding-bottom: 50px;
+}
+
+.step-container{
+    background-image: url("assets/images/bg-sidebar-desktop.svg");
+    flex:1; 
+    padding-left:10px;
+    padding-top: 15px;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+.form-container{
+    padding-left: 50px;
+    padding-top: 30px;
+    padding-right: 60px;
+}
+
+.circle-button1,.circle-button2,.circle-button3,.circle-button4 {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    height: 50%;
-    width: 50%;
-    max-width: 100%;
-    background-color: aquamarine;
-    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    border:1px solid white;
+    border-radius: 50%;
+    font-size: 15px;
+    color: white;
+    font-weight: 500;
 }
-#form{
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-label {
-    font-size: 13px;
-    margin-bottom: 5px;
-}
-img{
-    padding: 10px;
-    position: absolute;
-    
-}
-.container{
-    position: relative;
-    display: flex;
-
-}
-
-.circle-button {
+.circle-js{
     display: flex;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: hsl(259, 100%, 65%);
-    border: none;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border:none;
     border-radius: 50%;
-    font-size: 52px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: absolute;
+    font-size: 15px;
+    color: black;
+    font-weight: 500;
+    background-color: hsl(206, 94%, 87%);
 }
-.step1{
-    display: flex;
-    text-align: center;
-    flex-direction: column;
 
-    position: absolute;
+
+
+.step{
+    display: flex;
+    align-items: center;
+    padding:12px;
+}
+
+.step-main{
+    display: flex;
+    flex-direction: column;
+    padding-left:10px;
 }
 .text1{
-    margin-bottom:100px;
+
     color: hsl(213, 96%, 18%);
     font-size: 26px;
+    margin-bottom: 10px;
+
 }
 
 .text2{
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     color: hsl(231, 11%, 63%);
+}
+.step-text1{
+    color: hsl(231, 11%, 63%);
+    font-size: 12px;
+}
+.step-text2{
+    color:white;
+    font-size: 14px;
+
 }
 #bar1 {
     width: 400px;
@@ -104,6 +133,7 @@ img{
     padding: 15px;
 
 }
+
 .next-button{
     width: 100px;
     height: 35px;
@@ -114,7 +144,36 @@ img{
     border-radius: 5px;
     background-color: hsl(213, 96%, 18%);
     color: white;
+    font-weight: 500;
 
+}
+.back-button{
+    width: 100px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+    border-radius: 5px;
+    border:none;
+    background-color:hsl(231, 100%, 99%);
+    color: hsl(213, 96%, 18%);
+    font-weight: 600;
+
+}
+.next-button-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.back-button-container{
+    display: flex;
+    margin-top:20px;
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-between;
 }
 
 .error-text {
@@ -123,19 +182,26 @@ img{
     font-size: 13px;
     color: red;
 
-    
+}
+.labels{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -45px;
 }
 .buttons{
-    width: 50px;
-    height: 50px;
+
     display: flex;
-    flex-direction: row;
+
 
 }
 
+
 .arcade-button,.advanced-button,.pro-button{
+
     display: flex;
     flex-direction: column;
+    width: 100px;
+    height: 150px;
 }
 
 

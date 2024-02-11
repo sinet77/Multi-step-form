@@ -12,10 +12,14 @@
     const emailError = document.querySelector('#emailError')
     const phoneError = document.querySelector('#phoneError')
     const form = document.querySelector('#form');
+    let backButton = document.querySelector(".back-button")
     let arcadeButton = document.querySelector(".arcade-button")
     let advancedButton = document.querySelector(".advanced-button")
     let proButton = document.querySelector(".pro-button")
-
+    let circleButton1 = document.querySelector(".circle-button1")
+    let circleButton2 = document.querySelector(".circle-button2")
+    let circleButton3 = document.querySelector(".circle-button3")
+    let circleButton4 = document.querySelector(".circle-button4")
 
 
     function checkIfBarsFilled() {
@@ -44,6 +48,9 @@
     }
 
     function step2() {
+        circleButton1.className="circle-button1";
+        circleButton2.className='circle-js';
+        backButton.style.display="block";
         text1.textContent = "Select your plan"
         text2.textContent = "You have the option of monthly or yearly billing."
         form.style.display = "none";
@@ -55,10 +62,15 @@
     text1.textContent = "Personal info";
     text2.textContent = "Please provide your name, email address, and phone number."
 
+    circleButton1.className="circle-js";
+
     form.addEventListener('submit', function (event) {
         event.preventDefault();
-        checkIfBarsFilled()
-        step2()
+        const isValid= checkIfBarsFilled()
+        if(isValid){
+            
+        }
+        step2() // ma byc w srodku, ale po co przeklikiwac za kazdym razem
 
     })
 
