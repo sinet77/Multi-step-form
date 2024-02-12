@@ -148,8 +148,6 @@ label {
 
 }
 .back-button{
-    width: 100px;
-    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;

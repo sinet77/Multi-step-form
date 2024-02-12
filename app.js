@@ -3,7 +3,7 @@
     let bar1 = document.querySelector('#bar1');
     let bar2 = document.querySelector('#bar2');
     let bar3 = document.querySelector('#bar3');
-    let bars = document.querySelector('#bars');
+    let bars = document.querySelector('.bars');
     let nameLabel = document.querySelector('#nameLabel');
     let emailLabel = document.querySelector('#emailLabel');
     let phoneLabel = document.querySelector('#phoneLabel');
@@ -14,6 +14,7 @@
     const phoneError = document.querySelector('#phoneError')
     const form = document.querySelector('#form');
     let backButton = document.querySelector(".back-button")
+    let nextButton = document.querySelector(".next-button")
     let arcadeButton = document.querySelector(".arcade-button")
     let advancedButton = document.querySelector(".advanced-button")
     let proButton = document.querySelector(".pro-button")
@@ -52,6 +53,7 @@
         circleButton1.className="circle-button1";
         circleButton2.className='circle-js';
         backButton.style.display="block";
+        nextButton.style.display="block";
         toggle.style.display="block";
         text1.textContent = "Select your plan"
         text2.textContent = "You have the option of monthly or yearly billing."
@@ -79,10 +81,10 @@
         event.preventDefault();
         const isValid= checkIfBarsFilled()
         if(isValid){
-            
+            step2() // ma byc w srodku, ale po co przeklikiwac za kazdym razem
         }
-        step2() // ma byc w srodku, ale po co przeklikiwac za kazdym razem
-        step3()
+        
+        // step3()
     })
 
 
