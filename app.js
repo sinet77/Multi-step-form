@@ -3,6 +3,7 @@
     let bar1 = document.querySelector('#bar1');
     let bar2 = document.querySelector('#bar2');
     let bar3 = document.querySelector('#bar3');
+    let bars = document.querySelector('#bars');
     let nameLabel = document.querySelector('#nameLabel');
     let emailLabel = document.querySelector('#emailLabel');
     let phoneLabel = document.querySelector('#phoneLabel');
@@ -20,7 +21,7 @@
     let circleButton2 = document.querySelector(".circle-button2")
     let circleButton3 = document.querySelector(".circle-button3")
     let circleButton4 = document.querySelector(".circle-button4")
-
+    let toggle = document.querySelector(".toggle")
 
     function checkIfBarsFilled() {
         let isFilled = true;
@@ -51,12 +52,22 @@
         circleButton1.className="circle-button1";
         circleButton2.className='circle-js';
         backButton.style.display="block";
+        toggle.style.display="block";
         text1.textContent = "Select your plan"
         text2.textContent = "You have the option of monthly or yearly billing."
-        form.style.display = "none";
+        bars.style.display = "none";
         arcadeButton.style.display="block";
         advancedButton.style.display="block"
         proButton.style.display="block"
+    }
+
+    function step3(){
+        circleButton1.className="circle-button1";
+        circleButton2.className='circle-js';
+        backButton.style.display="block";
+        text1.textContent = "Pick add-ons"
+        text2.textContent = "Add-ons help enhance your gaming experience."
+        form.style.display = "none";
     }
 
     text1.textContent = "Personal info";
@@ -71,7 +82,7 @@
             
         }
         step2() // ma byc w srodku, ale po co przeklikiwac za kazdym razem
-
+        step3()
     })
 
 
