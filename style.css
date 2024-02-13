@@ -197,10 +197,9 @@ label {
 }
 
 
-.advanced-button,.pro-button{
+.arcade-button,.advanced-button,.pro-button{
 
     display: flex;
-    flex-direction: column;
     width: 110px;
     height: 130px;
     margin-right: 20px;
@@ -209,17 +208,7 @@ label {
     border-color: hsl(229, 24%, 87%);
     background-color: hsl(231, 100%, 99%); 
 }
-.arcade-button{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 110px;
-    height: 130px;
-    margin-right: 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    border-color: hsl(229, 24%, 87%);
-    background-color: hsl(231, 100%, 99%);
-}
+
 .arcade-button img {
     width: 30px;
     height: auto;

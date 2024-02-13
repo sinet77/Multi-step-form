@@ -24,6 +24,12 @@
     let circleButton4 = document.querySelector(".circle-button4")
     let toggle = document.querySelector(".toggle")
     let toggleCheckbox = document.querySelector('.toggle-checkbox');
+    let monthsFree = document.querySelector('.months-free1')
+    let monthsFree2 = document.querySelector('.months-free2')
+    let monthsFree3 = document.querySelector('.months-free3')
+    const arcadeMonths = document.querySelector('#arcade-months')
+    const advancedMonths = document.querySelector('#advanced-months')
+    const proMonths = document.querySelector('#pro-months')
 
     function checkIfBarsFilled() {
         let isFilled = true;
@@ -64,9 +70,13 @@
         proButton.style.display="block"
         toggleCheckbox.addEventListener('change',function(){
             if (this.checked) {
-                alert("hello"); 
+                arcadeMonths.style.display="block"
+                advancedMonths.style.display="block"
+                proMonths.style.display="block" 
             } else {
-                alert("hi");
+                arcadeMonths.style.display="none"
+                advancedMonths.style.display="none"
+                proMonths.style.display="none" 
              }
         })
 
