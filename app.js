@@ -23,6 +23,7 @@
     let circleButton3 = document.querySelector(".circle-button3")
     let circleButton4 = document.querySelector(".circle-button4")
     let toggle = document.querySelector(".toggle")
+    let toggleCheckbox = document.querySelector('.toggle-checkbox');
 
     function checkIfBarsFilled() {
         let isFilled = true;
@@ -61,31 +62,74 @@
         arcadeButton.style.display="block";
         advancedButton.style.display="block"
         proButton.style.display="block"
+        toggleCheckbox.addEventListener('change',function(){
+            if (this.checked) {
+                alert("hello"); 
+            } else {
+                alert("hi");
+             }
+        })
+
     }
 
     function step3(){
-        circleButton1.className="circle-button1";
-        circleButton2.className='circle-js';
+        circleButton2.className="circle-button2";
+        circleButton3.className='circle-js';
         backButton.style.display="block";
         text1.textContent = "Pick add-ons"
         text2.textContent = "Add-ons help enhance your gaming experience."
         form.style.display = "none";
     }
-
+    function step1(){
     text1.textContent = "Personal info";
     text2.textContent = "Please provide your name, email address, and phone number."
-
+    bars.style.display = "block";
+    arcadeButton.style.display="none";
+    advancedButton.style.display="none"
+    proButton.style.display="none"
     circleButton1.className="circle-js";
+    circleButton2.className="circle-button2";
+    toggle.style.display="none";
+    backButton.style.display="none";
+    }
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const isValid= checkIfBarsFilled()
+    step1()
+    
+    let index = 0;
+
+    nextButton.addEventListener('click',function(){
+        const isValid = checkIfBarsFilled()
         if(isValid){
-            step2() // ma byc w srodku, ale po co przeklikiwac za kazdym razem
+            step2()
+
+            // if(index<1){
+            //     index++;
+            //     step3()
+            // }
         }
-        
-        // step3()
     })
+    backButton.addEventListener('click',function(){
+        if(bars.value!=''){
+            phoneError.textContent=''
+            nameError.textContent=''
+            emailError.textContent=''
+            bar1.style.borderColor= "hsl(0, 0%, 8%, 0.3)";
+            bar2.style.borderColor= "hsl(0, 0%, 8%, 0.3)";
+            bar3.style.borderColor= "hsl(0, 0%, 8%, 0.3)";
+        }
+        if(text1.textContent == "Select your plan"){
+            step1();
+        }
+    })
+    // form.addEventListener('submit', function (event) {
+    //     event.preventDefault();
+    //     const isValid= checkIfBarsFilled()
+    //     if(isValid){
+    //         step2() // ma byc w srodku, ale po co przeklikiwac za kazdym razem
+    //     }
+        
+    //     // step3()
+    // })
 
 
 
