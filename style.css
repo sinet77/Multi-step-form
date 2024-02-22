@@ -17,8 +17,8 @@
     display: flex;
     background-color: hsl(231, 100%, 99%);
     border-radius: 10px;
-    width:40%;
-    height: 435px;
+    width:50%;
+    height: 500px;
     padding: 10px;
     box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 0.75);
 }
@@ -30,7 +30,7 @@ label {
 
 .step-container{
     background-image: url("assets/images/bg-sidebar-desktop.svg");
-    min-width: 200px; 
+    min-width: 300px; 
     padding-left:10px;
     padding-top: 15px;
     background-repeat: no-repeat;
@@ -38,9 +38,10 @@ label {
 
 }
 .form-container{
-    padding-left: 60px;
+
     padding-top: 30px;
     padding-right: 50px;
+
 }
 
 .circle-button1,.circle-button2,.circle-button3,.circle-button4 {
@@ -87,12 +88,13 @@ label {
     color: hsl(213, 96%, 18%);
     font-size: 26px;
     margin-bottom: 10px;
-
+    
 }
 
 .text2{
     margin-bottom: 30px;
     color: hsl(231, 11%, 63%);
+    
 }
 .step-text1{
     color: hsl(231, 11%, 63%);
@@ -104,7 +106,7 @@ label {
 
 }
 #bar1 {
-    width: 400px;
+    width: 100%;
     height: 40px;
     border-radius: 7px;
     border-color: hsl(0, 0%, 8%, 0.3);
@@ -112,7 +114,7 @@ label {
     margin-bottom: 20px;
 }
 #bar2 {
-    width: 400px;
+    width: 100%;
     height: 40px;
     border-radius: 7px;
     border-color: hsl(0, 0%, 8%, 0.3);
@@ -120,12 +122,12 @@ label {
     margin-bottom: 20px;
 }
 #bar3 {
-    width: 400px;
+    width: 100%;
     height: 40px;
     border-radius: 7px;
     border-color: hsl(0, 0%, 8%, 0.3);
     border-width: 1px;
-    margin-bottom: 20px;
+
 }
 .bars input{
     display: flex;
@@ -174,6 +176,7 @@ label {
 .button-container{
     display: flex;
     justify-content: space-between;
+    margin-top: 85px;
 
 }
 
@@ -196,7 +199,6 @@ label {
 
 }
 
-
 .arcade-button,.advanced-button,.pro-button{
 
     display: flex;
@@ -213,7 +215,35 @@ label {
     width: 30px;
     height: auto;
   }
-
+.only-to-step3{
+    margin-bottom: -20px;
+}
+.check-box-item{
+    display: flex;
+    width: 130%;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 7px;
+    border: 2px solid hsl(231, 11%, 90%);
+    background-color: hsl(231, 100%, 99%); 
+}
+.check-box{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    border: 1px solid hsl(231, 11%, 90%);
+}
+.check-box-item:checked {
+    background-color: red;
+}
+.up-price{
+    display: flex;
+    align-items: center;
+    color: rgb(67, 67, 198);
+}
+.sub-title{
+    color:  hsl(231, 11%, 63%);
+}
 
 
 
@@ -232,13 +262,13 @@ label {
 .toggle {
     cursor: pointer;
     display: flex;
-    width: 300px;
+    width: 100%;
     background-color:  hsl(231, 11%, 75%);
     justify-content: center;
     align-items: center;
     padding-top: 30px;
     border-radius: 10px;
-    height: 10px;
+    height: 5px;
     margin-top: 30px;
   }
   
@@ -283,3 +313,84 @@ label {
     margin-left: 20px;
     margin-right: 20px;
   }
+
+  .together {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding-bottom: 10px;
+  }
+
+.price{
+    display: flex;
+    justify-content: flex-end;
+    margin-left:200px;
+    color:  hsl(213, 96%, 18%);
+    font-weight: bold;
+}
+.price2{
+    font-size: 14px;
+    color:  hsl(213, 96%, 18%);
+}
+.sum-price{
+    font-size:20px;
+
+    
+}
+.table{
+    width: 100%;
+    background-color: hsl(231, 11%, 95%);;
+    padding: 15px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+}
+.total-sum{
+    padding: 15px;
+    margin-top:15px ;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color:hsl(251, 61%, 54%);
+    font-weight: bold;
+}
+.line{
+    width: 100%;
+    height: 1px;
+    background-color:  hsl(231, 11%, 83%);
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.option2,.total{
+    color: hsl(231, 11%, 63%);
+    font-size: 15px;
+}
+.option1{
+    margin-bottom: 5px;
+    color:  hsl(213, 96%, 18%);
+    font-weight: bold;
+}
+.change-button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    color:hsl(251, 61%, 54%);
+    font-size: 13px;
+}
+.confirm-button{
+    width: 100px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+    border-radius: 5px;
+    background-color: hsl(251, 61%, 54%);
+    color: white;
+    font-weight: 500;
+}
+.finish{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

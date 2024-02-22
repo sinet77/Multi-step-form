@@ -96,83 +96,99 @@
         <div class="buttons">
           <button class="arcade-button" style="display:none">
             <img src="assets/images/icon-arcade.svg" alt="arcade-icon">
-            <div class = "arcade-text">Arcade</div>
-            <div class = "arcade-month-price">$9/mo</div>
-            <div id="arcade-months" class ="months-free" style="display: none;">2 months free</div>
-            </button>
+            <div class="arcade-text">Arcade</div>
+            <div class="arcade-month-price">$9/mo</div>
+            <div id="arcade-months" class="months-free" style="display: none;">2 months free</div>
+          </button>
           <button class="advanced-button" style="display:none">
             <img src="assets/images/icon-advanced.svg" alt="arcade-icon">
-            <div class = "advanced-text">Advanced</div>
-            <div class = "advanced-month-price">$12/mo</div>
-            <div id="advanced-months" class ="months-free" style="display: none;">2 months free</div>
+            <div class="advanced-text">Advanced</div>
+            <div class="advanced-month-price">$12/mo</div>
+            <div id="advanced-months" class="months-free" style="display: none;">2 months free</div>
           </button>
           <button class="pro-button" style="display:none">
             <img src="assets/images/icon-pro.svg" alt="arcade-icon">
-            <div class = "pro-text">Pro</div>
-            <div class = "pro-month-price">$15/mo</div>
-            <div id="pro-months" class ="months-free" style="display: none;">2 months free</div>
+            <div class="pro-text">Pro</div>
+            <div class="pro-month-price">$15/mo</div>
+            <div id="pro-months" class="months-free" style="display: none;">2 months free</div>
           </button>
         </div>
+
         <label class="toggle" style="display:none;">
           <span class="toggle-label">Monthly</span>
           <input class="toggle-checkbox" type="checkbox">
           <div class="toggle-switch"></div>
           <span class="toggle-label">Yearly</span>
         </label>
-        <label class="check-boxes">
-          <span class="check-box1"></span>
 
-        </label>
+        <div class="only-to-step3" style="display:none">
+          <div class="check-box-item">
+            <input type="checkbox" class="check-box">
+            <div class="paragraph">
+              <div class="title">Online service</div>
+              <div class="sub-title">Access to multiplayer games</div>
+            </div>
+            <div class="up-price">+$1/mo</div>
+          </div>
+          <div class="check-box-item">
+            <input type="checkbox" class="check-box">
+            <div class="paragraph">
+              <div class="title">Larger storage</div>
+              <div class="sub-title">Extra 1TB of cloud save</div>
+            </div>
+            <div class="up-price">+$2/mo</div>
+          </div>
+          <div class="check-box-item">
+            <input type="checkbox" class="check-box">
+            <div class="paragraph">
+              <div class="title">Customizable Profile</div>
+              <div class="sub-title">Custom theme on your profile</div>
+            </div>
+            <div class="up-price">+$2/mo</div>
+          </div>
+        </div>
+        <div class="table" style="display: none">
+          <div class="together">
+            <div class="paragraph1">
+              <div class="option1">Arcade (Monthly)</div>
+              <button class="change-button">Change</button>
+            </div>
+            <div class="price">$9/mo</div>
+
+          </div>
+          <div class="line"></div>
+          <div class="together">
+
+          </div>
+        </div>
+        <div class="total-sum">
+          <span class="total">Total (per month)</span>
+          <span class="sum-price">+$12/mo</span>
+        </div>
+        <div class = "finish" style="display: none">
+          <img src="assets/images/icon-thank-you.svg" alt="tick-in-circle-icon">
+          <div class = "finish-text1">Thank you!</div>
+          <div class = "finish-text2">Thanks for confirming your subscription! We hope you have fun 
+            using our platform. If you ever need support, please feel free 
+            to email us at support@loremgaming.com.</div>
+        </div>
+
+
         <div class="button-container">
           <div class="back-button-container">
             <button class="back-button" type='submit' style="display:none;">Go back</button>
           </div>
+
           <div class="next-button-container">
             <button class="next-button" type='submit'>Next step</button>
           </div>
+
         </div>
       </div>
     </div>
   </div>
 
 
-
-  <!-- Arcade
-  
-
-  Advanced
-  $12/mo
-
-  Pro
-  $15/mo
-
-  Monthly
-  Yearly
-
-  Go Back
-  Next Step -->
-
-  <!-- Step 2 end -->
-
-  <!-- Step 3 start -->
-
-  <!-- Pick add-ons
-  Add-ons help enhance your gaming experience.
-
-  Online service
-  Access to multiplayer games
-  +$1/mo
-
-  Larger storage
-  Extra 1TB of cloud save
-  +$2/mo
-
-  Customizable Profile
-  Custom theme on your profile
-  +$2/mo
-
-  Go Back
-  Next Step -->
 
   <!-- Step 3 end -->
 
@@ -198,7 +214,6 @@
   using our platform. If you ever need support, please feel free 
   to email us at support@loremgaming.com. -->
 
-  <!-- Step 5 end -->
   <script src="app.js"></script>
 
 </body>
