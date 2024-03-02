@@ -216,6 +216,21 @@ label {
     display: flex;
     
 }
+.extension{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 110px;
+     height: 150px; /*zwiekszona wysokosc */
+    margin-right: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid hsl(231, 11%, 63%);
+}
+.extension img {
+    width: 30px;
+    height: auto;
+}
 
 .arcade-button,
 .advanced-button,
@@ -232,6 +247,7 @@ label {
     border: 1px solid hsl(231, 11%, 63%);
     
 }
+
 
 .arcade-button:hover{
     border: 1px solid hsl(213, 96%, 18%);
@@ -320,9 +336,10 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:  hsl(231, 100%, 99%); 
+    background-color:  hsl(228, 32%, 38%); 
     margin-top: 30px;
     height: 50px;
+    
   }
   .toggle-label{
     color: hsl(231, 11%, 63%);
@@ -339,7 +356,7 @@ label {
     height: 20px;
     margin-left: 20px;
     margin-right: 20px;
-    border-radius:50% ;
+    
   }
   
   /* Hide default HTML checkbox */

@@ -152,22 +152,29 @@
                 selected.selectedPlanId = clickedButtonId
                 console.log(selected)
 
-                toggleCheckbox.addEventListener('change', function () {
-                    if (toggleCheckbox.checked) {
-                        toggleMonthly.classList.remove = ("bold-text")
-                        toggleYearly.classList.add = ("bold-text")
-                        buttonPrice.textContent = `$${plan.price.yearly}/yr`;
-                        selected.selectedPlanVersion = "yearly";
-                        totalSum.textContent = 'Total (per year)';
 
-                    } else {
-                        toggleYearly.classList.remove = ("bold-text")
-                        toggleMonthly.classList.add = ("bold-text")
-                        buttonPrice.textContent = `$${plan.price.monthly}/mo`;
-                        selected.selectedPlanVersion = "monthly";
-                        totalSum.textContent = 'Total (per month)';
-                    }
-                })
+            })
+            toggleCheckbox.addEventListener('change', function () {
+                if (toggleCheckbox.checked) {
+                    toggleMonthly.classList.remove("bold-text")
+                    toggleYearly.classList.add("bold-text")
+                    buttonPrice.textContent = `$${plan.price.yearly}/yr`;
+                    selected.selectedPlanVersion = "yearly";
+                    totalSum.textContent = 'Total (per year)';
+                    freeMonths.classList.remove('display-none')
+                    button.classList.remove('arcade-button')
+                    button.classList.add('extension')
+
+                } else {
+                    toggleYearly.classList.remove("bold-text")
+                    toggleMonthly.classList.add("bold-text")
+                    buttonPrice.textContent = `$${plan.price.monthly}/mo`;
+                    selected.selectedPlanVersion = "monthly";
+                    totalSum.textContent = 'Total (per month)';
+                    freeMonths.classList.add('display-none')
+                    button.classList.add('arcade-button')
+                    button.classList.remove('extension')
+                }
             })
 
 
