@@ -147,13 +147,29 @@
             freeMonths.textContent = '2 months free'
             button.appendChild(freeMonths)
 
-            button.addEventListener('click', () => {
+            button.addEventListener('click', function(event){
+                const buttonPlan = event.currentTarget;
                 const clickedButtonId = plan.id
                 selected.selectedPlanId = clickedButtonId
                 console.log(selected)
+        
+        
+                if (buttonPlan.classList.contains('clicked')) {
 
-
+                    buttonPlan.classList.remove('clicked')
+                    isButtonClicked = false;
+                }
+                else {
+                    // buttonPlan.forEach(btn => btn.classList.remove('clicked'))
+                    buttonPlan.classList.add('clicked')
+                    isButtonClicked = true;
+        
+                }
             })
+                
+
+            
+
             toggleCheckbox.addEventListener('change', function () {
                 if (toggleCheckbox.checked) {
                     toggleMonthly.classList.remove("bold-text")
@@ -214,24 +230,7 @@
 
 
 
-    function handleClick(event) {
 
-        const button = event.currentTarget;
-
-        if (button.style.backgroundColor === "red") {
-
-            button.style.backgroundColor = "";
-            isButtonClicked = false;
-        }
-        else {
-
-            buttons.forEach(btn => btn.style.backgroundColor = "")
-            button.style.backgroundColor = "red";
-            isButtonClicked = true;
-
-        }
-
-    }
 
 
     function step2() {
@@ -248,13 +247,6 @@
         bars.style.display = "none";
         totalSum.style.display = "none";
         checkboxDisplay.style.display = "none";
-
-
-        buttons.forEach(button => {
-            button.addEventListener('click', handleClick);
-
-        });
-
 
 
     }

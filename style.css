@@ -216,6 +216,11 @@ label {
     display: flex;
     
 }
+.clicked{
+    
+    border: 1px solid hsl(213, 96%, 18%);
+    background-color: hsl(280, 13%, 91%);
+}
 .extension{
     display: flex;
     flex-direction: column;
@@ -226,6 +231,10 @@ label {
     border-radius: 5px;
     cursor: pointer;
     border: 1px solid hsl(231, 11%, 63%);
+}
+.extension:hover{
+    border: 1px solid hsl(213, 96%, 18%);
+    background-color: hsl(280, 13%, 91%);
 }
 .extension img {
     width: 30px;
