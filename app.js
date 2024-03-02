@@ -19,8 +19,6 @@
     let toggleCheckbox = document.querySelector('.toggle-checkbox');
     const toggleMonthly = document.querySelector('#toggle-monthly');
     const toggleYearly = document.querySelector('#toggle-yearly');
-    const freeMonths = document.querySelector('.freeMonths')
-    const buttons = document.querySelectorAll('.arcade-button, .advanced-button, .pro-button');
     const planButtons = document.querySelector('.buttons')
     let checkboxDisplay = document.querySelector(".only-to-step3")
     const checkBoxes = document.querySelectorAll(".check-box")
@@ -161,6 +159,7 @@
                 }
                 else {
                     // buttonPlan.forEach(btn => btn.classList.remove('clicked'))
+                    // moze planButtons?
                     buttonPlan.classList.add('clicked')
                     isButtonClicked = true;
         
