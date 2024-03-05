@@ -146,24 +146,28 @@
             button.appendChild(freeMonths)
 
             button.addEventListener('click', function(event){
+
                 const buttonPlan = event.currentTarget;
                 const clickedButtonId = plan.id
                 selected.selectedPlanId = clickedButtonId
                 console.log(selected)
-        
-        
-                if (buttonPlan.classList.contains('clicked')) {
 
+                const isButtonPlanClicked = buttonPlan.classList.contains('clicked')
+                const planButtons = document.querySelectorAll('.arcade-button')
+
+                planButtons.forEach(btn => {
+                    btn.classList.remove('clicked')
+                });
+
+                buttonPlan.classList.add('clicked')
+                isButtonClicked = true;
+
+                if(isButtonPlanClicked){
                     buttonPlan.classList.remove('clicked')
                     isButtonClicked = false;
                 }
-                else {
-                    // buttonPlan.forEach(btn => btn.classList.remove('clicked'))
-                    // moze planButtons?
-                    buttonPlan.classList.add('clicked')
-                    isButtonClicked = true;
+
         
-                }
             })
                 
 
