@@ -20,11 +20,13 @@
     const toggleMonthly = document.querySelector('#toggle-monthly');
     const toggleYearly = document.querySelector('#toggle-yearly');
     const planButtons = document.querySelector('.buttons')
+    const addOnsButtons = document.querySelector('.only-to-step3')
     let checkboxDisplay = document.querySelector(".only-to-step3")
     const checkBoxes = document.querySelectorAll(".check-box")
     let table = document.querySelector(".table")
     let totalSum = document.querySelector(".total-sum")
     const finish = document.querySelector(".finish")
+    const plans = document.querySelector('#plans')
 
 
     let isButtonClicked = false;
@@ -145,7 +147,7 @@
             freeMonths.textContent = '2 months free'
             button.appendChild(freeMonths)
 
-            button.addEventListener('click', function(event){
+            button.addEventListener('click', function (event) {
 
                 const buttonPlan = event.currentTarget;
                 const clickedButtonId = plan.id
@@ -155,6 +157,7 @@
                 const isButtonPlanClicked = buttonPlan.classList.contains('clicked')
                 const planButtons = document.querySelectorAll('.arcade-button')
 
+
                 planButtons.forEach(btn => {
                     btn.classList.remove('clicked')
                 });
@@ -162,16 +165,16 @@
                 buttonPlan.classList.add('clicked')
                 isButtonClicked = true;
 
-                if(isButtonPlanClicked){
+                if (isButtonPlanClicked) {
                     buttonPlan.classList.remove('clicked')
                     isButtonClicked = false;
                 }
 
-        
-            })
-                
 
-            
+            })
+
+
+
 
             toggleCheckbox.addEventListener('change', function () {
                 if (toggleCheckbox.checked) {
@@ -183,6 +186,7 @@
                     freeMonths.classList.remove('display-none')
                     button.classList.remove('arcade-button')
                     button.classList.add('extension')
+
 
                 } else {
                     toggleYearly.classList.remove("bold-text")
@@ -202,8 +206,76 @@
 
     }
 
+    function addAddOns() {
+        avaiableAddons.forEach(addone => {
+
+            const bar = document.createElement('div')
+            bar.classList.add('check-box-item')
+            addOnsButtons.appendChild(bar)
+
+            const checkbox = document.createElement('input')
+            checkbox.setAttribute('type', 'checkbox')
+            checkbox.classList.add('check-box')
+            bar.appendChild(checkbox)
+
+            const paragraph = document.createElement('div')
+            paragraph.classList.add('paragraph')
+            bar.appendChild(paragraph)
+
+            const barTitle = document.createElement('div')
+            barTitle.classList.add('title');
+            barTitle.textContent = addone.title
+            bar.appendChild(barTitle);
+
+            const barText = document.createElement('div')
+            barText.classList.add('sub-title');
+            barText.textContent = addone.description
+            bar.appendChild(barText);
+
+            const barPrice = document.createElement('div');
+            barPrice.classList.add('up-price');
+            barPrice.textContent = `$${addone.price.monthly}/mo`;
+            bar.appendChild(barPrice);
+
+            toggleCheckbox.addEventListener('change', function () {
+                if (toggleCheckbox.checked) {
+                    barPrice.textContent = `$${addone.price.yearly}/yr`;
+                }
+                else {
+                    barPrice.textContent = `$${addone.price.monthly}/mo`;
+                }
+            })
+        })
+    }
+
+    addAddOns()
+
+    function calculatelPriceTogether() {
 
 
+        selected.addons.forEach(addon=> {
+        
+                    const selectedAddOn = document.createElement('div');
+                    selectedAddOn.classList.add('selectedAddOn');
+        
+                    const selectedAddOnTitle = document.createElement('div');
+                    selectedAddOnTitle.classList.add('selectedAddOnTitle');
+                    selectedAddOnTitle.textContent = addon.id;
+                    selectedAddOn.appendChild(selectedAddOnTitle);
+        
+                    const selectedAddOnPrice = document.createElement('div');
+                    selectedAddOnPrice.classList.add('selectedAddOnPrice');
+                    const currentAddOnPrice = addon.price[selected.selectedPlanVersion];
+    
+                    console.log("currentAddonPrice", currentAddOnPrice)
+    
+                    selectedAddOnPrice.textContent = currentAddOnPrice
+                    selectedAddOn.appendChild(selectedAddOnPrice);
+                    summaryAddons.appendChild(selectedAddOn)
+        })
+    }
+
+    
     function checkIfBarsFilled() {
         let isFilled = true;
 
@@ -232,12 +304,12 @@
 
 
 
-
+    makeAPlan()
 
 
 
     function step2() {
-        makeAPlan()
+        plans.classList.remove('display-none')
         circleButton1.className = "circle-button1";
         circleButton3.className = "circle-button3";
         circleButton4.className = "circle-button4";
@@ -252,6 +324,7 @@
         checkboxDisplay.style.display = "none";
 
 
+
     }
 
     let isBoxClicked = false;
@@ -263,7 +336,7 @@
     }
 
     function step3() {
-
+        plans.classList.add('display-none')
         finish.style.display = "none"
         circleButton2.className = "circle-button2";
         circleButton4.className = "circle-button4";
@@ -298,6 +371,7 @@
 
     }
     function step1() {
+        plans.classList.add('display-none')
         text1.textContent = "Personal info";
         text2.textContent = "Please provide your name, email address, and phone number."
         bars.style.display = "block";
@@ -317,6 +391,7 @@
     const price2Element = document.querySelector('.price2');
 
     function step4() {
+        plans.classList.add('display-none')
         circleButton4.className = 'circle-js';
         circleButton1.className = "circle-button1";
         circleButton2.className = "circle-button2";
@@ -378,10 +453,18 @@
 
     step1()
 
+
+    const changeButton = document.querySelector('.change-button');
+    changeButton.addEventListener('click', () => {
+        step2();
+        currentStep = 2;
+    })
+
     let currentStep = 1;
 
 
-    nextButton.addEventListener('click', function () {
+    
+        nextButton.addEventListener('click', function () {
 
 
         if (currentStep === 1) {
@@ -413,54 +496,42 @@
             step5()
             return
         }
-
-
-
-
-
-
-        // if (isButtonClicked == true) {
-        //     alert('Please choose a plan you want before going to next step');
-        //     return;
-        // }
-        // else {
-        //     step3()
-        // }
-
-
     })
 
 
-    backButton.addEventListener('click', function () {
-        if (currentStep === 1) {
-            currentStep++;
-            return
-        }
-        if (currentStep === 2) {
-            step1()
-            currentStep--;
-            return
-        }
-        if (currentStep === 3) {
-            currentStep--;
-            step2()
-            return
-        }
-        if (currentStep === 4) {
-            currentStep--;
-            step3()
-            return
-        }
-        if (currentStep === 5) {
-            currentStep--;
-            step4()
-            return
-        } if (currentStep === 6) {
-            currentStep--;
-            step5()
-            return
-        }
 
-    })
+    
+        backButton.addEventListener('click', function () {
+    if (currentStep === 1) {
+        currentStep++;
+        return
+    }
+    if (currentStep === 2) {
+        step1()
+        currentStep--;
+        return
+    }
+    if (currentStep === 3) {
+        currentStep--;
+        step2()
+        return
+    }
+    if (currentStep === 4) {
+        currentStep--;
+        step3()
+        return
+    }
+    if (currentStep === 5) {
+        currentStep--;
+        step4()
+        return
+    } if (currentStep === 6) {
+        currentStep--;
+        step5()
+        return
+    }
+
+})
+
 
 })();
