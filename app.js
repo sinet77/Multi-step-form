@@ -387,8 +387,6 @@
 
     }
 
-    const option2Element = document.querySelector('.option2');
-    const price2Element = document.querySelector('.price2');
 
     function step4() {
         plans.classList.add('display-none')
@@ -402,37 +400,7 @@
         table.style.display = "block";
         totalSum.style.display = "block";
         finish.style.display = "none"
-        if (isObjectEmpty(prices)) {
-            option2Element.remove()
-            price2Element.remove()
-        }
-        else {
 
-            const togetherElement = document.querySelector('.together');
-            togetherElement.classList.add('together')
-
-            for (const key in prices) {
-                if (prices.hasOwnProperty(key)) {
-
-                    const optionElement = document.createElement('div');
-                    const priceElement = document.createElement('div');
-
-
-                    optionElement.classList.add('option2');
-                    priceElement.classList.add('price2');
-
-                    optionElement.textContent = key;
-                    priceElement.textContent = prices[key];
-
-
-
-                    togetherElement.appendChild(optionElement);
-                    togetherElement.appendChild(priceElement);
-
-
-                }
-            }
-        }
 
     }
 
