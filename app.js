@@ -125,6 +125,7 @@
 
             const button = document.createElement('div')
             button.classList.add('arcade-button')
+            button.classList.add("planButton")
             planButtons.appendChild(button)
 
             const img = document.createElement('img')
@@ -155,7 +156,7 @@
                 console.log(selected)
 
                 const isButtonPlanClicked = buttonPlan.classList.contains('clicked')
-                const planButtons = document.querySelectorAll('.arcade-button')
+                const planButtons = document.querySelectorAll('.planButton')
 
 
                 planButtons.forEach(btn => {
@@ -184,8 +185,8 @@
                     selected.selectedPlanVersion = "yearly";
                     totalSum.textContent = 'Total (per year)';
                     freeMonths.classList.remove('display-none')
-                    button.classList.remove('arcade-button')
-                    button.classList.add('extension')
+                    // button.classList.remove('arcade-button')
+                    // button.classList.add('extension')
 
 
                 } else {
@@ -195,8 +196,8 @@
                     selected.selectedPlanVersion = "monthly";
                     totalSum.textContent = 'Total (per month)';
                     freeMonths.classList.add('display-none')
-                    button.classList.add('arcade-button')
-                    button.classList.remove('extension')
+                    // button.classList.add('arcade-button')
+                    // button.classList.remove('extension')
                 }
             })
 
@@ -252,6 +253,12 @@
 
     function calculatelPriceTogether() {
 
+        // pobrac wybrany planId -> selected.selectedPlanId
+        // znalezc plan z avaiablePlan 
+        // pobrac cene, tytul
+        // wpisac do HTML cene i tytul aktualnego planu
+
+
 
         selected.addons.forEach(addon=> {
         
@@ -273,6 +280,12 @@
                     selectedAddOn.appendChild(selectedAddOnPrice);
                     summaryAddons.appendChild(selectedAddOn)
         })
+
+        // sumowanie ceny
+        // cena z wybranego planu
+        // zsumowac ceny z selected.addons  selected.addons.reduce(()=>{wykonac sumowanie},0)
+        // dodac dwie ceny
+        // wpisac do HTML
     }
 
     
@@ -309,6 +322,7 @@
 
 
     function step2() {
+        toggle.classList.remove('display-none')
         plans.classList.remove('display-none')
         circleButton1.className = "circle-button1";
         circleButton3.className = "circle-button3";
@@ -316,7 +330,6 @@
         circleButton2.className = 'circle-js';
         backButton.style.display = "block";
         nextButton.style.display = "block";
-        toggle.style.display = "block";
         text1.textContent = "Select your plan"
         text2.textContent = "You have the option of monthly or yearly billing."
         bars.style.display = "none";
@@ -336,6 +349,7 @@
     }
 
     function step3() {
+        toggle.classList.add('display-none')
         plans.classList.add('display-none')
         finish.style.display = "none"
         circleButton2.className = "circle-button2";
@@ -345,7 +359,6 @@
         text1.textContent = "Pick add-ons"
         text2.textContent = "Add-ons help enhance your gaming experience."
         checkboxDisplay.style.display = "block";
-        toggle.style.display = "none";
         totalSum.style.display = "none";
         table.style.display = "none";
         checkBoxes.forEach(checkBox => {
@@ -371,6 +384,7 @@
 
     }
     function step1() {
+        toggle.classList.add('display-none')
         plans.classList.add('display-none')
         text1.textContent = "Personal info";
         text2.textContent = "Please provide your name, email address, and phone number."
@@ -380,7 +394,6 @@
         circleButton3.className = "circle-button3";
         circleButton4.className = "circle-button4";
         checkboxDisplay.style.display = "none";
-        toggle.style.display = "none";
         backButton.style.display = "none";
         totalSum.style.display = "none";
 
@@ -389,6 +402,7 @@
 
 
     function step4() {
+        toggle.classList.add('display-none')
         plans.classList.add('display-none')
         circleButton4.className = 'circle-js';
         circleButton1.className = "circle-button1";
@@ -406,6 +420,7 @@
 
 
     function step5() {
+        toggle.classList.add('display-none')
         circleButton4.className = 'circle-js';
         circleButton1.className = "circle-button1";
         circleButton2.className = "circle-button2";
@@ -428,6 +443,7 @@
         currentStep = 2;
     })
 
+    
     let currentStep = 1;
 
 
