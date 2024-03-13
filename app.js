@@ -97,7 +97,7 @@
         email: '',
         phone: '',
         selectedPlanId: "",
-        selectedPlanVersion: "",
+        selectedPlanVersion: "monthly",
         addons: []
     }
 
@@ -116,7 +116,7 @@
         selected.phone = typedPhone;
     });
 
-    console.log(selected)
+
 
 
 
@@ -153,7 +153,7 @@
                 const buttonPlan = event.currentTarget;
                 const clickedButtonId = plan.id
                 selected.selectedPlanId = clickedButtonId
-                console.log(selected)
+
 
                 const isButtonPlanClicked = buttonPlan.classList.contains('clicked')
                 const planButtons = document.querySelectorAll('.planButton')
@@ -185,8 +185,9 @@
                     selected.selectedPlanVersion = "yearly";
                     totalSum.textContent = 'Total (per year)';
                     freeMonths.classList.remove('display-none')
-                    // button.classList.remove('arcade-button')
-                    // button.classList.add('extension')
+
+
+
 
 
                 } else {
@@ -196,8 +197,7 @@
                     selected.selectedPlanVersion = "monthly";
                     totalSum.textContent = 'Total (per month)';
                     freeMonths.classList.add('display-none')
-                    // button.classList.add('arcade-button')
-                    // button.classList.remove('extension')
+
                 }
             })
 
@@ -206,6 +206,8 @@
 
 
     }
+    console.log(selected)
+
 
     function addAddOns() {
         avaiableAddons.forEach(addone => {
@@ -214,29 +216,44 @@
             bar.classList.add('check-box-item')
             addOnsButtons.appendChild(bar)
 
+            const parent = document.createElement('div')
+            parent.classList.add('parent')
+            bar.appendChild(parent)
+
+
             const checkbox = document.createElement('input')
             checkbox.setAttribute('type', 'checkbox')
             checkbox.classList.add('check-box')
-            bar.appendChild(checkbox)
+            parent.appendChild(checkbox)
+
 
             const paragraph = document.createElement('div')
             paragraph.classList.add('paragraph')
-            bar.appendChild(paragraph)
+            parent.appendChild(paragraph)
+
 
             const barTitle = document.createElement('div')
             barTitle.classList.add('title');
             barTitle.textContent = addone.title
-            bar.appendChild(barTitle);
+            paragraph.appendChild(barTitle);
 
             const barText = document.createElement('div')
             barText.classList.add('sub-title');
             barText.textContent = addone.description
-            bar.appendChild(barText);
+            paragraph.appendChild(barText);
 
             const barPrice = document.createElement('div');
             barPrice.classList.add('up-price');
             barPrice.textContent = `$${addone.price.monthly}/mo`;
             bar.appendChild(barPrice);
+
+            checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    bar.classList.add('add-ons-bar-selected')
+                }   else if(!checkbox.checked){
+                    bar.classList.remove('add-ons-bar-selected')
+                }
+            })
 
             toggleCheckbox.addEventListener('change', function () {
                 if (toggleCheckbox.checked) {
@@ -260,25 +277,32 @@
 
 
 
-        selected.addons.forEach(addon=> {
-        
-                    const selectedAddOn = document.createElement('div');
-                    selectedAddOn.classList.add('selectedAddOn');
-        
-                    const selectedAddOnTitle = document.createElement('div');
-                    selectedAddOnTitle.classList.add('selectedAddOnTitle');
-                    selectedAddOnTitle.textContent = addon.id;
-                    selectedAddOn.appendChild(selectedAddOnTitle);
-        
-                    const selectedAddOnPrice = document.createElement('div');
-                    selectedAddOnPrice.classList.add('selectedAddOnPrice');
-                    const currentAddOnPrice = addon.price[selected.selectedPlanVersion];
-    
-                    console.log("currentAddonPrice", currentAddOnPrice)
-    
-                    selectedAddOnPrice.textContent = currentAddOnPrice
-                    selectedAddOn.appendChild(selectedAddOnPrice);
-                    summaryAddons.appendChild(selectedAddOn)
+
+
+        selected.addons.forEach(addon => {
+
+            const chosenPlanID = selected.selectedPlanId
+            const chosenPlanVersion = selected.selectedPlanVersion
+            const chosenPrice = avaiablePlans.price[selectedPlanVersion]
+            const chosenTitle = avaiablePlans.chosenPlanID
+
+            const selectedAddOn = document.createElement('div');
+            selectedAddOn.classList.add('selectedAddOn');
+
+            const selectedAddOnTitle = document.createElement('div');
+            selectedAddOnTitle.classList.add('selectedAddOnTitle');
+            selectedAddOnTitle.textContent = addon.id;
+            selectedAddOn.appendChild(selectedAddOnTitle);
+
+            const selectedAddOnPrice = document.createElement('div');
+            selectedAddOnPrice.classList.add('selectedAddOnPrice');
+            const currentAddOnPrice = addon.price[selected.selectedPlanVersion];
+
+            console.log("currentAddonPrice", currentAddOnPrice)
+
+            selectedAddOnPrice.textContent = currentAddOnPrice
+            selectedAddOn.appendChild(selectedAddOnPrice);
+            summaryAddons.appendChild(selectedAddOn)
         })
 
         // sumowanie ceny
@@ -288,7 +312,8 @@
         // wpisac do HTML
     }
 
-    
+    calculatelPriceTogether()
+
     function checkIfBarsFilled() {
         let isFilled = true;
 
@@ -443,12 +468,12 @@
         currentStep = 2;
     })
 
-    
+
     let currentStep = 1;
 
 
-    
-        nextButton.addEventListener('click', function () {
+
+    nextButton.addEventListener('click', function () {
 
 
         if (currentStep === 1) {
@@ -484,38 +509,38 @@
 
 
 
-    
-        backButton.addEventListener('click', function () {
-    if (currentStep === 1) {
-        currentStep++;
-        return
-    }
-    if (currentStep === 2) {
-        step1()
-        currentStep--;
-        return
-    }
-    if (currentStep === 3) {
-        currentStep--;
-        step2()
-        return
-    }
-    if (currentStep === 4) {
-        currentStep--;
-        step3()
-        return
-    }
-    if (currentStep === 5) {
-        currentStep--;
-        step4()
-        return
-    } if (currentStep === 6) {
-        currentStep--;
-        step5()
-        return
-    }
 
-})
+    backButton.addEventListener('click', function () {
+        if (currentStep === 1) {
+            currentStep++;
+            return
+        }
+        if (currentStep === 2) {
+            step1()
+            currentStep--;
+            return
+        }
+        if (currentStep === 3) {
+            currentStep--;
+            step2()
+            return
+        }
+        if (currentStep === 4) {
+            currentStep--;
+            step3()
+            return
+        }
+        if (currentStep === 5) {
+            currentStep--;
+            step4()
+            return
+        } if (currentStep === 6) {
+            currentStep--;
+            step5()
+            return
+        }
+
+    })
 
 
 })();

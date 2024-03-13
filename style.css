@@ -40,7 +40,6 @@ label {
 }
 
 .form-container {
-
     padding-top: 30px;
     padding-right: 50px;
     position: relative;
@@ -166,8 +165,6 @@ label {
 
 .back-button {
     display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
     border-radius: 5px;
     border: none;
@@ -270,48 +267,53 @@ label {
     font-weight: 500;
 }
 
-.only-to-step3 {
-    margin-bottom: -20px;
-}
 
 .check-box-item {
     display: flex;
-    align-items: center;
-    width: 130%;
+    justify-content: space-between;
+    width: 390px;
     margin-bottom: 10px;
     padding: 15px;
     border-radius: 7px;
     border: 2px solid hsl(231, 11%, 90%);
-    background-color: hsl(231, 100%, 99%);
     cursor: pointer;
 }
-
+.add-ons-bar-selected{
+    background-color:  hsl(231, 11%, 93%);
+    border:2px solid blueviolet;
+}
 .check-box {
-
+    cursor: pointer;
     margin-right: 15px;
     border: 1px solid hsl(231, 11%, 90%);
 }
 
-.check-box-item:checked {
-    background-color: red;
+.paragraph{
+    display: flex;
+    flex-direction: column;
 }
-
+.parent{
+    display: flex;
+}
 .up-price {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     color: rgb(67, 67, 198);
 }
 
 .title{
     color: hsl(213, 96%, 18%);
-    font-weight: 500;
+    font-weight: 700;
     font-size: 16px;
     margin-bottom: 5px;
+
 }
 .sub-title {
     font-size: 14px;
-    color: hsl(231, 11%, 63%);
+    color: hsl(231, 11%,56%);
 }
+
 
 
 
@@ -333,9 +335,11 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:  hsl(228, 32%, 38%); 
+    background-color:  hsl(222, 19%, 89%); 
     margin-top: 30px;
     height: 50px;
+    border-radius: 10px;
+    border: 1px solid black;
     
   }
   .toggle-label{
@@ -345,11 +349,12 @@ label {
   }
   .bold-text {
     color: hsl(213, 96%, 18%);
+    font-weight: bold;
   }
   .together-back {
     position: relative;
     display: inline-block;
-    width: 35px;
+    width: 45px;
     height: 25px;
     margin-left: 20px;
     margin-right: 20px;
@@ -381,16 +386,16 @@ label {
   .toggle-switch:before {
     position: absolute;
     content: "";
-    height: 13px;
-    width: 13px;
+    height: 16px;
+    width: 16px;
     left: 4px;
     bottom: 4px;
     background-color: white;
     transition: .4s;
   }
   input:checked + .toggle-switch:before {
-    -webkit-transform: translateX(14px);
-    transform: translateX(14px);
+    
+    transform: translateX(21px);
   }
   
   /* Rounded sliders */
@@ -453,7 +458,6 @@ label {
 .table {
     width: 100%;
     background-color: hsl(231, 11%, 95%);
-    ;
     padding: 15px;
     padding-bottom: 5px;
     border-radius: 10px;
@@ -515,6 +519,10 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.finish-text2{
+    display: flex;
+    justify-content: center;
 }
 
 .display-none{
