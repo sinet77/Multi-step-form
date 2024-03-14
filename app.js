@@ -79,7 +79,7 @@
             price: {
                 monthly: 2,
                 yearly: 20
-            }
+            }   
         },
         {
             id: "Customizable profile",
@@ -248,11 +248,19 @@
             bar.appendChild(barPrice);
 
             checkbox.addEventListener('change', function () {
+
+                const price = parseFloat(barPrice.textContent.replace(/[^\d.]/g, ''));
                 if (checkbox.checked) {
                     bar.classList.add('add-ons-bar-selected')
+                    selected.addons.push(price)
+                    console.log(selected.addons)
                 } else if (!checkbox.checked) {
                     bar.classList.remove('add-ons-bar-selected')
-                }
+                    const indexToRemove = selected.addons.indexOf(price);
+                    if (indexToRemove !== -1) {  //if indexOf dont find a match, it will return -1
+                        selected.addons.splice(indexToRemove, 1);
+                    console.log(selected.addons)
+                }}
             })
 
             toggleCheckbox.addEventListener('change', function () {
@@ -279,7 +287,7 @@
 
         if(clickedPlanButton){
 
-                        const step2Price = clickedPlanButton.price[selected.selectedPlanVersion]
+        const step2Price = clickedPlanButton.price[selected.selectedPlanVersion]
         console.log(step2Price)
 
         const addOneSum = selected.addons.reduce((accumulator, currentValue) => {
