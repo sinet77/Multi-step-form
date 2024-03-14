@@ -250,7 +250,7 @@
             checkbox.addEventListener('change', function () {
                 if (checkbox.checked) {
                     bar.classList.add('add-ons-bar-selected')
-                }   else if(!checkbox.checked){
+                } else if (!checkbox.checked) {
                     bar.classList.remove('add-ons-bar-selected')
                 }
             })
@@ -275,16 +275,31 @@
         // pobrac cene, tytul
         // wpisac do HTML cene i tytul aktualnego planu
 
+        const clickedPlanButton = avaiablePlans.find(chosenPlan => chosenPlan.id === selected.selectedPlanId);
+
+        if(clickedPlanButton){
+
+                        const step2Price = clickedPlanButton.price[selected.selectedPlanVersion]
+        console.log(step2Price)
+
+        const addOneSum = selected.addons.reduce((accumulator, currentValue) => {
+            const addonPrice = currentValue.price[selected.selectedPlanVersion]
+            console.log(addonPrice)
+            return accumulator + addonPrice;
+        }, 0);
+        const totalSum = step2Price + addOneSum;
+
+        const totalPrice = document.querySelector('.sum-price')
+
+        totalPrice.textContent = totalSum;
+
+        console.log(totalSum)
+        }
 
 
 
 
         selected.addons.forEach(addon => {
-
-            const chosenPlanID = selected.selectedPlanId
-            const chosenPlanVersion = selected.selectedPlanVersion
-            const chosenPrice = avaiablePlans.price[selectedPlanVersion]
-            const chosenTitle = avaiablePlans.chosenPlanID
 
             const selectedAddOn = document.createElement('div');
             selectedAddOn.classList.add('selectedAddOn');
@@ -312,7 +327,7 @@
         // wpisac do HTML
     }
 
-    calculatelPriceTogether()
+    
 
     function checkIfBarsFilled() {
         let isFilled = true;
@@ -439,6 +454,7 @@
         table.style.display = "block";
         totalSum.style.display = "block";
         finish.style.display = "none"
+        calculatelPriceTogether()
 
 
     }
