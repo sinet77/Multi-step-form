@@ -209,6 +209,9 @@
     console.log(selected)
 
 
+    makeAPlan()
+
+
     function addAddOns() {
         avaiableAddons.forEach(addone => {
 
@@ -282,7 +285,7 @@
         // znalezc plan z avaiablePlan 
         // pobrac cene, tytul
         // wpisac do HTML cene i tytul aktualnego planu
-
+        let sum = 0;
         const clickedPlanButton = avaiablePlans.find(chosenPlan => chosenPlan.id === selected.selectedPlanId);
 
         if(clickedPlanButton){
@@ -290,17 +293,18 @@
         const step2Price = clickedPlanButton.price[selected.selectedPlanVersion]
         console.log(step2Price)
 
-        const addOneSum = selected.addons.reduce((accumulator, currentValue) => {
+        selected.addons.forEach(addon => {
+            sum+=addon;
+        })
 
-            return accumulator + currentValue;
-        },0 );
-        const totalSum = step2Price + addOneSum;
+        const totalSum = step2Price + sum;
 
         const totalPrice = document.querySelector('.sum-price')
 
         totalPrice.textContent = totalSum;
 
         console.log(totalSum)
+        console.log(avaiableAddons.price[selected.selectedPlanVersion])
         }
 
 
@@ -364,7 +368,7 @@
 
 
 
-    makeAPlan()
+    
 
 
 
