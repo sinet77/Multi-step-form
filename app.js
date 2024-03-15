@@ -291,10 +291,9 @@
         console.log(step2Price)
 
         const addOneSum = selected.addons.reduce((accumulator, currentValue) => {
-            const addonPrice = currentValue.price[selected.selectedPlanVersion]
-            console.log(addonPrice)
-            return accumulator + addonPrice;
-        }, 0);
+
+            return accumulator + currentValue;
+        },0 );
         const totalSum = step2Price + addOneSum;
 
         const totalPrice = document.querySelector('.sum-price')
