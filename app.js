@@ -304,7 +304,7 @@
         totalPrice.textContent = totalSum;
 
         console.log(totalSum)
-        console.log(avaiableAddons.price[selected.selectedPlanVersion])
+       
         }
 
 
@@ -322,13 +322,11 @@
 
             const selectedAddOnPrice = document.createElement('div');
             selectedAddOnPrice.classList.add('selectedAddOnPrice');
-            const currentAddOnPrice = addon.price[selected.selectedPlanVersion];
 
-            console.log("currentAddonPrice", currentAddOnPrice)
 
-            selectedAddOnPrice.textContent = currentAddOnPrice
+            selectedAddOnPrice.textContent = addon
             selectedAddOn.appendChild(selectedAddOnPrice);
-            summaryAddons.appendChild(selectedAddOn)
+            
         })
 
         // sumowanie ceny
