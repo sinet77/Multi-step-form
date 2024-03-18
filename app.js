@@ -153,6 +153,7 @@
                 const buttonPlan = event.currentTarget;
                 const clickedButtonId = plan.id
                 selected.selectedPlanId = clickedButtonId
+                console.log(clickedButtonId)
 
 
                 const isButtonPlanClicked = buttonPlan.classList.contains('clicked')
@@ -287,6 +288,18 @@
         // wpisac do HTML cene i tytul aktualnego planu
         let sum = 0;
         const clickedPlanButton = avaiablePlans.find(chosenPlan => chosenPlan.id === selected.selectedPlanId);
+        console.log(clickedPlanButton)
+        const planPrice = document.querySelector('.price')
+        if(selected.selectedPlanVersion === 'monthly'){
+            planPrice.textContent = `$${clickedPlanButton.price[selected.selectedPlanVersion]}/mo`
+        }
+        else {
+            planPrice.textContent = `$${clickedPlanButton.price[selected.selectedPlanVersion]}/yr`
+        }
+        
+        const planName = document.querySelector('.option1')
+        planName.textContent = clickedPlanButton.id + ' ' + `(${selected.selectedPlanVersion})`;
+        
 
         if(clickedPlanButton){
 
@@ -310,6 +323,8 @@
 
 
 
+
+
         selected.addons.forEach(addon => {
 
             const selectedAddOn = document.createElement('div');
@@ -318,14 +333,26 @@
             const selectedAddOnTitle = document.createElement('div');
             selectedAddOnTitle.classList.add('selectedAddOnTitle');
             selectedAddOnTitle.textContent = addon.id;
+            // if(avaiableAddons.price[selected.selectedPlanVersion] === addon){
+            //     selectedAddOnTitle.textContent = "tytuł"
+            // }
+            console.log(addon.title)
             selectedAddOn.appendChild(selectedAddOnTitle);
 
             const selectedAddOnPrice = document.createElement('div');
             selectedAddOnPrice.classList.add('selectedAddOnPrice');
-
-
             selectedAddOnPrice.textContent = addon
+
             selectedAddOn.appendChild(selectedAddOnPrice);
+            
+
+            table.appendChild(selectedAddOn)
+
+            console.log(selectedAddOn)
+
+            // summary.appendChild(selectedAddOn)
+
+            // console.log(summary)
             
         })
 
