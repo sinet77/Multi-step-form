@@ -400,6 +400,7 @@
     function step2() {
         toggle.classList.remove('display-none')
         plans.classList.remove('display-none')
+        finish.classList.add('display-none')
         circleButton1.className = "circle-button1";
         circleButton3.className = "circle-button3";
         circleButton4.className = "circle-button4";
@@ -427,7 +428,7 @@
     function step3() {
         toggle.classList.add('display-none')
         plans.classList.add('display-none')
-        finish.style.display = "none"
+        finish.classList.add('display-none')
         circleButton2.className = "circle-button2";
         circleButton4.className = "circle-button4";
         circleButton3.className = 'circle-js';
@@ -462,6 +463,7 @@
     function step1() {
         toggle.classList.add('display-none')
         plans.classList.add('display-none')
+        finish.classList.add('display-none')
         text1.textContent = "Personal info";
         text2.textContent = "Please provide your name, email address, and phone number."
         bars.style.display = "block";
@@ -480,6 +482,7 @@
     function step4() {
         toggle.classList.add('display-none')
         plans.classList.add('display-none')
+        finish.classList.add('display-none')
         circleButton4.className = 'circle-js';
         circleButton1.className = "circle-button1";
         circleButton2.className = "circle-button2";
@@ -489,7 +492,7 @@
         text2.textContent = "Double-check everything looks OK before confirming."
         table.style.display = "block";
         totalSum.style.display = "block";
-        finish.style.display = "none"
+        
         calculatelPriceTogether()
 
 
@@ -498,6 +501,7 @@
 
     function step5() {
         toggle.classList.add('display-none')
+        finish.classList.remove('display-none')
         circleButton4.className = 'circle-js';
         circleButton1.className = "circle-button1";
         circleButton2.className = "circle-button2";
@@ -507,7 +511,6 @@
         text2.textContent = ''
         table.style.display = "none";
         totalSum.style.display = "none";
-        finish.style.display = "block"
         nextButton.style.display = "none";
     }
 

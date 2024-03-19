@@ -519,10 +519,8 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.finish-text2{
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
+    
 }
 
 .display-none{
