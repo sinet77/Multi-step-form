@@ -25,8 +25,10 @@
     const checkBoxes = document.querySelectorAll(".check-box")
     let table = document.querySelector(".table")
     let totalSum = document.querySelector(".total-sum")
+    let total = document.querySelector('.total')
     const finish = document.querySelector(".finish")
     const plans = document.querySelector('#plans')
+    let summary = document.querySelector('.summary')
 
 
     let isButtonClicked = false;
@@ -79,7 +81,7 @@
             price: {
                 monthly: 2,
                 yearly: 20
-            }   
+            }
         },
         {
             id: "Customizable profile",
@@ -184,7 +186,7 @@
                     toggleYearly.classList.add("bold-text")
                     buttonPrice.textContent = `$${plan.price.yearly}/yr`;
                     selected.selectedPlanVersion = "yearly";
-                    totalSum.textContent = 'Total (per year)';
+                    total.textContent = 'Total (per year)';
                     freeMonths.classList.remove('display-none')
 
 
@@ -196,7 +198,7 @@
                     toggleMonthly.classList.add("bold-text")
                     buttonPrice.textContent = `$${plan.price.monthly}/mo`;
                     selected.selectedPlanVersion = "monthly";
-                    totalSum.textContent = 'Total (per month)';
+                    total.textContent = 'Total (per month)';
                     freeMonths.classList.add('display-none')
 
                 }
@@ -253,18 +255,21 @@
 
             checkbox.addEventListener('change', function () {
 
-                const price = parseFloat(barPrice.textContent.replace(/[^\d.]/g, ''));
                 if (checkbox.checked) {
                     bar.classList.add('add-ons-bar-selected')
-                    selected.addons.push(price)
+                    selected.addons.push(addone.id)
                     console.log(selected.addons)
                 } else if (!checkbox.checked) {
                     bar.classList.remove('add-ons-bar-selected')
-                    const indexToRemove = selected.addons.indexOf(price);
-                    if (indexToRemove !== -1) {  //if indexOf dont find a match, it will return -1
-                        selected.addons.splice(indexToRemove, 1);
-                    console.log(selected.addons)
-                }}
+                    const updatedAddons = selected.addons.filter(addon => addon !== addone.id)
+                    selected.addons = updatedAddons
+
+                    // const indexToRemove = selected.addons.indexOf(addone.id);
+                    // if (indexToRemove !== -1) {  //if indexOf dont find a match, it will return -1
+                    //     selected.addons.splice(indexToRemove, 1);
+                    //     console.log(selected.addons)
+                    // }
+                }
             })
 
             toggleCheckbox.addEventListener('change', function () {
@@ -286,75 +291,65 @@
         // znalezc plan z avaiablePlan 
         // pobrac cene, tytul
         // wpisac do HTML cene i tytul aktualnego planu
-        let sum = 0;
+
         const clickedPlanButton = avaiablePlans.find(chosenPlan => chosenPlan.id === selected.selectedPlanId);
         console.log(clickedPlanButton)
         const planPrice = document.querySelector('.price')
-        if(selected.selectedPlanVersion === 'monthly'){
+        if (selected.selectedPlanVersion === 'monthly') {
             planPrice.textContent = `$${clickedPlanButton.price[selected.selectedPlanVersion]}/mo`
         }
         else {
             planPrice.textContent = `$${clickedPlanButton.price[selected.selectedPlanVersion]}/yr`
         }
-        
+
         const planName = document.querySelector('.option1')
-        planName.textContent = clickedPlanButton.id + ' ' + `(${selected.selectedPlanVersion})`;
-        
-
-        if(clickedPlanButton){
-
-        const step2Price = clickedPlanButton.price[selected.selectedPlanVersion]
-        console.log(step2Price)
-
-        selected.addons.forEach(addon => {
-            sum+=addon;
-        })
-
-        const totalSum = step2Price + sum;
-
-        const totalPrice = document.querySelector('.sum-price')
-
-        totalPrice.textContent = totalSum;
-
-        console.log(totalSum)
-       
-        }
+        planName.textContent = `${clickedPlanButton.title} (${selected.selectedPlanVersion})`;
 
 
 
 
 
 
-        selected.addons.forEach(addon => {
+        // usuwanie z HTML danych
+        summary.innerHTML = ''
+
+
+        selected.addons.forEach(id => {
+            const clickedAddon = avaiableAddons.find(chosenAddon => chosenAddon.id === id);
+
 
             const selectedAddOn = document.createElement('div');
             selectedAddOn.classList.add('selectedAddOn');
 
             const selectedAddOnTitle = document.createElement('div');
             selectedAddOnTitle.classList.add('selectedAddOnTitle');
-            selectedAddOnTitle.textContent = addon.id;
-            // if(avaiableAddons.price[selected.selectedPlanVersion] === addon){
-            //     selectedAddOnTitle.textContent = "tytuł"
-            // }
-            console.log(addon.title)
+
+            selectedAddOnTitle.textContent = clickedAddon.title;
+
+
             selectedAddOn.appendChild(selectedAddOnTitle);
 
             const selectedAddOnPrice = document.createElement('div');
             selectedAddOnPrice.classList.add('selectedAddOnPrice');
-            selectedAddOnPrice.textContent = addon
+            selectedAddOnPrice.textContent = clickedAddon.price[selected.selectedPlanVersion]
 
             selectedAddOn.appendChild(selectedAddOnPrice);
-            
 
-            table.appendChild(selectedAddOn)
+            summary.appendChild(selectedAddOn)
 
-            console.log(selectedAddOn)
-
-            // summary.appendChild(selectedAddOn)
-
-            // console.log(summary)
-            
         })
+
+
+        const addonsSum = selected.addons.reduce((currentSum, addon) => {
+            const clickedAddon = avaiableAddons.find(chosenAddon => chosenAddon.id === addon);
+            return currentSum + clickedAddon.price[selected.selectedPlanVersion]
+        }, 0)
+
+        const totalPriceElement = document.querySelector('.sum-price')
+        
+        const totalSum = clickedPlanButton.price[selected.selectedPlanVersion] + addonsSum
+        totalPriceElement.textContent = totalSum;
+        
 
         // sumowanie ceny
         // cena z wybranego planu
@@ -363,7 +358,7 @@
         // wpisac do HTML
     }
 
-    
+
 
     function checkIfBarsFilled() {
         let isFilled = true;
@@ -393,50 +388,59 @@
 
 
 
-    
+    function step1() {
+        toggle.classList.add('display-none')
+        plans.classList.add('display-none')
+        finish.classList.add('display-none')
+        backButton.classList.add('display-none')
+        totalSum.classList.add('display-none')
+        nextButton.classList.remove('display-none')
+        text1.textContent = "Personal info";
+        text2.textContent = "Please provide your name, email address, and phone number."
+        bars.style.display = "block";
+        circleButton1.className = "circle-js";
+        circleButton2.className = "circle-button2";
+        circleButton3.className = "circle-button3";
+        circleButton4.className = "circle-button4";
+        checkboxDisplay.style.display = "none";
+        
+
+
+    }
 
 
 
     function step2() {
         toggle.classList.remove('display-none')
         plans.classList.remove('display-none')
+        backButton.classList.remove('display-none')
+        totalSum.classList.add('display-none')
         finish.classList.add('display-none')
         circleButton1.className = "circle-button1";
         circleButton3.className = "circle-button3";
         circleButton4.className = "circle-button4";
         circleButton2.className = 'circle-js';
-        backButton.style.display = "block";
-        nextButton.style.display = "block";
         text1.textContent = "Select your plan"
         text2.textContent = "You have the option of monthly or yearly billing."
-        bars.style.display = "none";
-        totalSum.style.display = "none";
+        bars.style.display = "none";       
         checkboxDisplay.style.display = "none";
 
 
 
     }
 
-    let isBoxClicked = false;
-
-    const prices = {}
-
-    const isObjectEmpty = (objectName) => {
-        return Object.keys(objectName).length === 0  //zwraca true or false
-    }
-
     function step3() {
         toggle.classList.add('display-none')
         plans.classList.add('display-none')
         finish.classList.add('display-none')
+        totalSum.classList.add('display-none')
+        nextButton.classList.remove('display-none')
         circleButton2.className = "circle-button2";
         circleButton4.className = "circle-button4";
         circleButton3.className = 'circle-js';
-        backButton.style.display = "block";
         text1.textContent = "Pick add-ons"
         text2.textContent = "Add-ons help enhance your gaming experience."
         checkboxDisplay.style.display = "block";
-        totalSum.style.display = "none";
         table.style.display = "none";
         checkBoxes.forEach(checkBox => {
             checkBox.addEventListener("change", function () {
@@ -460,29 +464,15 @@
 
 
     }
-    function step1() {
-        toggle.classList.add('display-none')
-        plans.classList.add('display-none')
-        finish.classList.add('display-none')
-        text1.textContent = "Personal info";
-        text2.textContent = "Please provide your name, email address, and phone number."
-        bars.style.display = "block";
-        circleButton1.className = "circle-js";
-        circleButton2.className = "circle-button2";
-        circleButton3.className = "circle-button3";
-        circleButton4.className = "circle-button4";
-        checkboxDisplay.style.display = "none";
-        backButton.style.display = "none";
-        totalSum.style.display = "none";
 
-
-    }
 
 
     function step4() {
         toggle.classList.add('display-none')
         plans.classList.add('display-none')
         finish.classList.add('display-none')
+        nextButton.classList.remove('display-none')
+        totalSum.classList.remove('display-none')
         circleButton4.className = 'circle-js';
         circleButton1.className = "circle-button1";
         circleButton2.className = "circle-button2";
@@ -491,8 +481,8 @@
         text1.textContent = "Finishing up";
         text2.textContent = "Double-check everything looks OK before confirming."
         table.style.display = "block";
-        totalSum.style.display = "block";
         
+
         calculatelPriceTogether()
 
 
@@ -501,7 +491,9 @@
 
     function step5() {
         toggle.classList.add('display-none')
+        nextButton.classList.add('display-none')
         finish.classList.remove('display-none')
+        totalSum.classList.add('display-none')
         circleButton4.className = 'circle-js';
         circleButton1.className = "circle-button1";
         circleButton2.className = "circle-button2";
@@ -510,9 +502,11 @@
         text1.textContent = ''
         text2.textContent = ''
         table.style.display = "none";
-        totalSum.style.display = "none";
-        nextButton.style.display = "none";
+        
+
     }
+
+
 
     step1()
 
@@ -567,30 +561,28 @@
 
     backButton.addEventListener('click', function () {
         if (currentStep === 1) {
+            step1()
             currentStep++;
             return
         }
         if (currentStep === 2) {
-            step1()
+            step2()
             currentStep--;
             return
         }
         if (currentStep === 3) {
             currentStep--;
-            step2()
+            step3()
             return
         }
         if (currentStep === 4) {
             currentStep--;
-            step3()
+            step4()
             return
         }
         if (currentStep === 5) {
             currentStep--;
-            step4()
-            return
-        } if (currentStep === 6) {
-            currentStep--;
+            console.log(currentStep)
             step5()
             return
         }

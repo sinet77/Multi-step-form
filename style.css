@@ -43,6 +43,7 @@ label {
     padding-top: 30px;
     padding-right: 50px;
     position: relative;
+    max-width: 500px;
 
 }
 
@@ -439,10 +440,11 @@ label {
   }
   
   .selectedAddOn{
-    
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
+    padding-bottom: 5px;
   }
   
   .selectedAddOnTitle {
@@ -464,6 +466,8 @@ label {
 }
 
 .total-sum {
+    display: flex;
+    justify-content: space-between;
     padding: 15px;
     margin-top: 15px;
     display: flex;
@@ -520,9 +524,16 @@ label {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 70px;
     
 }
-
+.finish-text1{
+    margin-top: 20px;
+}
+.finish-text2{
+    margin-top: 20px;
+    color: hsl(231, 11%, 53%);
+}
 .display-none{
     display: none;
 }
