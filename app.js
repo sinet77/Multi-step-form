@@ -310,7 +310,7 @@
 
 
 
-        // usuwanie z HTML danych
+        // usuwanie z HTML danych, zeby po cofnieciu i wybraniu innych opcji. w tabeli w step 4, byly usuwane poprzednie
         summary.innerHTML = ''
 
 
@@ -331,7 +331,12 @@
 
             const selectedAddOnPrice = document.createElement('div');
             selectedAddOnPrice.classList.add('selectedAddOnPrice');
-            selectedAddOnPrice.textContent = clickedAddon.price[selected.selectedPlanVersion]
+            if(selected.selectedPlanVersion === "monthly"){
+                selectedAddOnPrice.textContent = `$${clickedAddon.price[selected.selectedPlanVersion]}/mo`
+            }   else{
+                selectedAddOnPrice.textContent = `$${clickedAddon.price[selected.selectedPlanVersion]}/yr`
+            }
+            
 
             selectedAddOn.appendChild(selectedAddOnPrice);
 
@@ -348,7 +353,14 @@
         const totalPriceElement = document.querySelector('.sum-price')
         
         const totalSum = clickedPlanButton.price[selected.selectedPlanVersion] + addonsSum
-        totalPriceElement.textContent = totalSum;
+
+        if(selected.selectedPlanVersion === "monthly"){
+            totalPriceElement.textContent = `$${totalSum}/mo`;
+        } else{
+            totalPriceElement.textContent = `$${totalSum}/yr`;
+        }
+        
+        
         
 
         // sumowanie ceny
@@ -394,6 +406,7 @@
         finish.classList.add('display-none')
         backButton.classList.add('display-none')
         totalSum.classList.add('display-none')
+        table.classList.add('display-none')
         nextButton.classList.remove('display-none')
         text1.textContent = "Personal info";
         text2.textContent = "Please provide your name, email address, and phone number."
@@ -416,6 +429,7 @@
         backButton.classList.remove('display-none')
         totalSum.classList.add('display-none')
         finish.classList.add('display-none')
+        table.classList.add('display-none')
         circleButton1.className = "circle-button1";
         circleButton3.className = "circle-button3";
         circleButton4.className = "circle-button4";
@@ -434,6 +448,7 @@
         plans.classList.add('display-none')
         finish.classList.add('display-none')
         totalSum.classList.add('display-none')
+        table.classList.add('display-none')
         nextButton.classList.remove('display-none')
         circleButton2.className = "circle-button2";
         circleButton4.className = "circle-button4";
@@ -441,7 +456,6 @@
         text1.textContent = "Pick add-ons"
         text2.textContent = "Add-ons help enhance your gaming experience."
         checkboxDisplay.style.display = "block";
-        table.style.display = "none";
         checkBoxes.forEach(checkBox => {
             checkBox.addEventListener("change", function () {
                 const upPrice = this.parentElement.querySelector('.up-price').textContent
@@ -473,6 +487,7 @@
         finish.classList.add('display-none')
         nextButton.classList.remove('display-none')
         totalSum.classList.remove('display-none')
+        table.classList.remove('display-none')
         circleButton4.className = 'circle-js';
         circleButton1.className = "circle-button1";
         circleButton2.className = "circle-button2";
@@ -480,7 +495,7 @@
         checkboxDisplay.style.display = "none";
         text1.textContent = "Finishing up";
         text2.textContent = "Double-check everything looks OK before confirming."
-        table.style.display = "block";
+        
         
 
         calculatelPriceTogether()
@@ -494,6 +509,7 @@
         nextButton.classList.add('display-none')
         finish.classList.remove('display-none')
         totalSum.classList.add('display-none')
+        table.classList.add('display-none')
         circleButton4.className = 'circle-js';
         circleButton1.className = "circle-button1";
         circleButton2.className = "circle-button2";
@@ -501,7 +517,7 @@
         checkboxDisplay.style.display = "none";
         text1.textContent = ''
         text2.textContent = ''
-        table.style.display = "none";
+        
         
 
     }
@@ -532,6 +548,7 @@
             if (isStep1Valid) {
                 step2()
                 currentStep++;
+                console.log(currentStep)
                 return;
             }
         }
@@ -539,19 +556,20 @@
         if (currentStep === 2 && isButtonClicked == true) {
             step3()
             currentStep++;
+            console.log(currentStep)
             return
         }
-        // else {
-        //     alert("Please choose a plan before going to the next step") // dziala dla wszystkich
-        // }
 
-        if (currentStep === 3) {                //&& isBoxClicked == true
+        if (currentStep === 3) {                
             step4()
             currentStep++;
+            console.log(currentStep)
             return
         }
         if (currentStep === 4) {
+            currentStep++;
             step5()
+            
             return
         }
     })
@@ -560,30 +578,30 @@
 
 
     backButton.addEventListener('click', function () {
-        if (currentStep === 1) {
-            step1()
-            currentStep++;
-            return
-        }
+
         if (currentStep === 2) {
-            step2()
+            step1()
             currentStep--;
+            console.log(currentStep)
+
             return
         }
         if (currentStep === 3) {
             currentStep--;
-            step3()
+            console.log(currentStep)
+            step2()
             return
         }
         if (currentStep === 4) {
             currentStep--;
-            step4()
+            console.log(currentStep)
+            step3()
             return
         }
         if (currentStep === 5) {
             currentStep--;
             console.log(currentStep)
-            step5()
+            step4()
             return
         }
 
