@@ -543,7 +543,7 @@
 
         if (currentStep === 1) {
 
-            const isStep1Valid = true; //checkIfBarsFilled()
+            const isStep1Valid = checkIfBarsFilled()
 
             if (isStep1Valid) {
                 step2()
